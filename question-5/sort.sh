@@ -4,15 +4,17 @@ arr=($@)
 
 if [[ $# -lt 3 ]]; then
   echo Number of arguments must not be less than three.
-
   echo e.g. usage: ./sort.sh 10 25 80 55 39
-else
-  echo "Numbers entered are: ${arr[*]}"
 
+else
   size=${#arr[@]}
+
+  echo "Numbers entered: ${arr[*]}"
+  #echo "Array size: $(( size ))"
 
   for (( i=0; i < size-1; i++)); do
     for (( j=0; j < size-i-1; j++ )); do
+      #echo "i=$i, j=$j size:$((size-i-1))"
 
       if (( arr[j] > arr[j+1] )); then
         tmp=${arr[j]}
@@ -23,7 +25,5 @@ else
     done
   done
   
-  echo -n "Sorted array: ${arr[*]}"
+  echo "Sorted numbers: ${arr[*]}"
 fi
-echo
-
